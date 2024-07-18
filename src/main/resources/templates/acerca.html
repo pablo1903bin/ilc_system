@@ -1,0 +1,34 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head  th:insert="~{fragments/head :: head-principal}"></head>
+
+  <body>
+
+    <header th:insert="~{fragments/menu :: menu-principal}"></header>
+
+    <main role="main">     
+      <hr>
+      <div class="container"> 
+
+        <div class="card">
+          <h4 class="card-header">Acerca de <strong>Empleos App</strong> </h4>              
+          <div class="card-body">
+            
+				<p>Aplicación para Publicar Ofertas de Trabajo desarrollada con Spring Boot.</p1>
+
+          </div>
+        </div>
+      </div> <!-- /container -->
+
+    </main>
+
+    <footer th:insert="~{fragments/footer :: pie-pagina}" class="footer"></footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>     
+  </body>
+</html>

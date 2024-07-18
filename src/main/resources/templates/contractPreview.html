@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Previsualización del Contrato</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Previsualización del Contrato</h2>
+        <p>Arrendador: <span th:text="${contractData.arrendador}"></span></p>
+        <p>Arrendatario: <span th:text="${contractData.arrendatario}"></span></p>
+        <p>Fecha: <span th:text="${contractData.fecha}"></span></p>
+        <p>Lugar: <span th:text="${contractData.lugar}"></span></p>
+        <form th:action="@{/contract/downloadContract}" th:object="${contractData}" method="post">
+            <button type="submit" class="btn btn-primary">Descargar Contrato</button>
+        </form>
+    </div>
+</body>
+</html>

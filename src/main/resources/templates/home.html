@@ -1,0 +1,80 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head  th:insert="~{fragments/head :: head-principal}"></head>
+
+  <body>
+
+	<header th:insert="~{fragments/menu :: menu-principal}"></header>
+
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+       
+         
+        <!--  <form th:action="@{/search}" th:object="${search}" method="get" class="form-inline">
+            <input type="text" th:field="*{descripcion}" class="form-control mb-3" placeholder="Escriba una búsqueda">&nbsp;
+            <select th:field="*{categoria.id}" class="custom-select custom-select mb-3">
+              <option th:value="${null}" selected>Seleccione una categoría</option>
+              <option th:each="categoria : ${categorias}" 
+					  th:value="${categoria.id}"
+					  th:text="${categoria.nombre}">
+			  </option>
+            </select>&nbsp;
+            
+            <button type="submit" class="btn btn-primary mb-3">Buscar</button>     -->       
+			
+		
+			<form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+			    <label for="file">Seleccionar PDF:</label>
+			    <input type="file" id="file" name="file" accept="application/pdf" required>
+			    <button type="submit">Subir</button>
+			</form>
+          </form>
+		  
+		  <div th:if="${filePath}">
+		       <h2>Uploaded PDF:</h2>
+		       <iframe th:src="@{'/pdf-viewer?filePath=' + ${filePath}}" width="600" height="800"></iframe>
+		   </div>
+
+		   <div th:if="${message}">
+		       <p th:text="${message}"></p>
+		   </div>
+		   
+		   
+        </div>
+      </div>
+            
+      <div class="container"> 
+        <h2 class="font-weight-bold text-center text-capitalize">DESTACADOS</h2>
+        <div th:if="${msg != null}" class='alert alert-success' th:text="${msg}" role='alert'></div>
+        <hr>        
+        <div class="row" th:each="vacante : ${vacantes}">
+          <div class="col-md-3">            
+            <img class="rounded mx-auto d-block" th:src="@{/logos/{img} (img=${vacante.imagen}) }" alt="Generic placeholder image" width="220" height="220">            
+          </div>
+          <div class="col-md-9">
+            <h2 th:text="${vacante.nombre}">Arquitecto</h2>
+            <h6 class="card-title"><strong>Categoría: </strong> <span th:text="${vacante.categoria.nombre}"></span></h6>
+            <h6 class="card-title"><strong>Publicado: </strong> <span th:text="${#dates.format(vacante.fecha, 'dd-MM-yyyy')}"></span></h6>
+            <p th:text="${vacante.descripcion}">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-secondary" th:href="@{/vacantes/view/{id} (id=${vacante.id}) }" role="button">Ver detalles &raquo;</a></p>            
+          </div>
+        </div> 
+        <hr>         
+        
+      </div> <!-- /container -->
+
+    </main>
+    
+    <footer th:insert="~{fragments/footer :: pie-pagina}" class="footer"></footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+  </body>
+</html>

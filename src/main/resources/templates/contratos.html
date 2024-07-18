@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="~{fragments/head :: head-principal}"></head>
+    <body>
+        <header th:insert="~{fragments/menu :: menu-principal}"></header>
+        <div class="container">
+            <h2>Generar Contrato</h2>
+           <form th:action="@{/contract/generateContract}" th:object="${contractData}"
+                method="post">
+                <div class="form-group">
+                    <label for="arrendador">Arrendador</label>
+                    <input type="text" class="form-control" id="arrendador"
+                        th:field="*{arrendador}" required>
+                </div>
+                <div class="form-group">
+                    <label for="arrendatario">Arrendatario</label>
+                    <input type="text" class="form-control" id="arrendatario"
+                        th:field="*{arrendatario}" required>
+                </div>
+                <div class="form-group">
+                    <label for="fecha">Fecha</label>
+                    <input type="date" class="form-control" id="fecha"
+                        th:field="*{fecha}" required>
+                </div>
+                <div class="form-group">
+                    <label for="lugar">Lugar</label>
+                    <input type="text" class="form-control" id="lugar"
+                        th:field="*{lugar}" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Generar
+                    Contrato</button>
+            </form>
+        </div>
+
+        <footer th:insert="~{fragments/footer :: pie-pagina}"
+            class="footer"></footer>
+
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+    </body>
+</html>

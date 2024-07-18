@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+<head  th:insert="~{fragments/head :: head-principal}"></head>
+
+  <body>
+
+	<header th:insert="~{fragments/menu :: menu-principal}"></header>
+	
+	
+    <h1>Uploaded PDF</h1>
+    <div th:if="${filename}">
+        <h2>Preview:</h2>
+        <iframe th:src="@{'/files/' + ${filename}}" width="600" height="800"></iframe>
+    </div>
+    <div th:if="${message}">
+        <p th:text="${message}"></p>
+    </div>
+    <a href="/ilc_system">Back to Upload</a>
+	
+	<footer th:insert="~{fragments/footer :: pie-pagina}" class="footer"></footer>
+	
+	
+</body>
+</html>
